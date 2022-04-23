@@ -41,6 +41,10 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" title="Delete this contact" class="btn btn-danger rounded-pill ">Delete</button>
+
+                            <button type="button" class="btn btn-danger rounded-pill" onclick="location.href='{{ url('/') }}';">
+                                Back
+                            </button>
                         </form>
                         </div>
                     </div>

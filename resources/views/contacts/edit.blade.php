@@ -57,7 +57,7 @@
                         <div class="row mb-0">
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-primary rounded-pill mx-2">
-                                    Register
+                                    Save
                                 </button>
                                 <button type="button" class="btn btn-danger rounded-pill" onclick="location.href='{{ url('/') }}';">
                                     Cancel
