@@ -36,13 +36,13 @@
                     <div class="row mb-0">
                         <div class="col-md-6 offset-md-4">
                         <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST">
-                            <button type="button" class="btn text-light rounded-pill btn-dark mx-2" title="Edit this contact" onclick="location.href='{{ route('contacts.edit', $contact->id) }}';">Edit</a>
+                            <button type="button" class="btn text-light rounded-pill btn-primary mx-2" title="Edit this contact" onclick="location.href='{{ route('contacts.edit', $contact->id) }}';">Edit</a>
 
                             @csrf
                             @method('DELETE')
                             <button type="submit" title="Delete this contact" class="btn btn-danger rounded-pill ">Delete</button>
 
-                            <button type="button" class="btn btn-danger rounded-pill" onclick="location.href='{{ url('/') }}';">
+                            <button type="button" class="btn btn-dark rounded-pill" onclick="location.href='{{ url('/') }}';">
                                 Back
                             </button>
                         </form>
