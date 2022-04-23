@@ -19,6 +19,8 @@
   --bs-cyan: #0dcaf0;
   --bs-white: #fff;
   --bs-gray: #6c757d;
+  --bs-blueviolet: #8a2be2;
+  --bs-dark-violet: #4c1a7a;
   --bs-gray-dark: #343a40;
   --bs-gray-100: #f8f9fa;
   --bs-gray-200: #e9ecef;
@@ -7840,6 +7842,16 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 }
 
+.bg-blueviolet {
+    --bs-bg-opacity: 1;
+    background-color: var(--bs-blueviolet) !important;
+}
+
+.bg-dark-violet {
+    --bs-bg-opacity: 1;
+    background-color: var(--bs-dark-violet) !important;
+}
+
 .bg-dark {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
@@ -7963,6 +7975,18 @@ textarea.form-control-lg {
 .rounded-start {
   border-bottom-left-radius: 0.25rem !important;
   border-top-left-radius: 0.25rem !important;
+}
+
+.rounded-end-pill {
+    border-end-end-radius: 10rem !important;
+    border-top-right-radius: 10rem !important;
+}
+
+.rounded-start-pill {
+    border-start-start-radius: 10rem !important;
+    border-end-start-radius: 10rem !important;
+    border-color: #4c1a7a;
+    background-color: #4c1a7a;
 }
 
 .visible {
