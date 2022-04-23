@@ -16,4 +16,4 @@ use App\Http\Controllers\Contacts\ContactsController;
 */
 Auth::routes();
 
-Route::resource('/', ContactsController::class);
+Route::resource('/contacts', ContactsController::class);
