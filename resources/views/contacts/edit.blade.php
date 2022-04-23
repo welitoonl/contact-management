@@ -5,11 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Edit') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('contacts.store') }}">
+                    <form method="POST" action="{{ route('contacts.update', $contact->id) }}">
                         @csrf
+                        @method('PUT')
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
@@ -54,9 +55,12 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary rounded-pill mx-2">
+                                    Register
+                                </button>
+                                <button type="button" class="btn btn-danger rounded-pill" onclick="location.href='{{ url('/') }}';">
+                                    Cancel
                                 </button>
                             </div>
                         </div>

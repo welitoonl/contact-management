@@ -5,16 +5,18 @@ namespace App\Http\Controllers\Contacts;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class ContactsController extends Controller {
+
     /**
-     * Show the form for creating a new resource.
+     * Create a new controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function index() {
-        $contacts = Contact::all();
-        return view('contacts.list', ['contacts' => $contacts]);
+    public function __construct(){
+        $this->middleware('auth');
     }
 
     /**
@@ -33,15 +35,16 @@ class ContactsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+
         $request->validate([
-            'name' => 'required',
-            'contact' => 'required',
-            'email' => 'required'
+            'name' => ['required', 'string', 'min:5', 'max:128'],
+            'contact' => ['required', 'numeric', 'digits:9'],
+            'email' => ['required', 'string', 'email', 'max:256', 'unique:contacts']
         ]);
 
         Contact::create($request->all());
 
-        return redirect()->route('contacts.list')->with('success', 'Contact created successfully.');
+        return redirect('/')->with('success', 'Contact created successfully.');
     }
 
     /**
@@ -71,16 +74,16 @@ class ContactsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Contact $contact){
+
         $request->validate([
-            'name' => 'required',
-            'contact' => 'required',
-            'email' => 'required'
+            'name' => ['required', 'string', 'min:5', 'max:128'],
+            'contact' => ['required', 'numeric', 'digits:9'],
+            'email' => ['required', 'email', 'unique:contacts,email,'.$contact->id],
         ]);
 
         $contact->update($request->all());
 
-        return redirect()->route('contacts.index')
-            ->with('success', 'Contact updated successfully');
+        return redirect('/')->with('success', 'Contact updated successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -91,7 +94,6 @@ class ContactsController extends Controller {
     public function destroy(Contact $contact) {
         $contact->delete();
 
-        return redirect()->route('contacts.index')
-            ->with('success', 'Contact deleted successfully');
+        return redirect('/')->with('success', 'Contact deleted successfully');
     }
 }

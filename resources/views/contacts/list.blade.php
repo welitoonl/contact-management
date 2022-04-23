@@ -33,8 +33,8 @@
                                     <td>{{ $contact->email }}</td>
                                     <td class="text-center">
                                         <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST">
-
-                                            <a class="btn btn-warning text-light rounded-start-pill" title="Edit this contact" href="{{ route('contacts.edit', $contact->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a class="btn text-light rounded-start-pill" title="Edit this contact" href="{{ route('contacts.show', $contact->id) }}"><i class="fa-solid fa-eye"></i></a>
+                                            <a class="btn text-light rounded-0 btn-dark" title="Edit this contact" href="{{ route('contacts.edit', $contact->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
 
                                             @csrf
                                             @method('DELETE')

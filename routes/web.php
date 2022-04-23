@@ -14,6 +14,7 @@ use App\Http\Controllers\Contacts\ContactsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Route::resource('/', HomeController::class);
 
+Auth::routes();
 Route::resource('/contacts', ContactsController::class);
