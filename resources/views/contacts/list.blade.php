@@ -16,7 +16,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <table class="table table-striped">
+                    <table class="table table-striped table-responsive">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -33,19 +33,31 @@
                                     <td>{{ $contact->email }}</td>
                                     <td class="text-center">
                                         <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST">
-                                            <a class="btn text-light rounded-start-pill" title="Edit this contact" href="{{ route('contacts.show', $contact->id) }}"><i class="fa-solid fa-eye"></i></a>
-                                            <a class="btn text-light rounded-0 btn-dark" title="Edit this contact" href="{{ route('contacts.edit', $contact->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <div class="d-none d-md-none d-lg-block">
+                                                <a class="btn text-light rounded-start-pill" title="Show this contact" href="{{ route('contacts.show', $contact->id) }}"><i class="fa-solid fa-eye"></i></a>
+                                                <a class="btn text-light rounded-0 btn-dark" title="Edit this contact" href="{{ route('contacts.edit', $contact->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                                            @csrf
-                                            @method('DELETE')
+                                                @csrf
+                                                @method('DELETE')
 
-                                            <button type="submit" title="Delete this contact" class="btn btn-danger rounded-end-pill "><i class="fa-solid fa-trash"></i></button>
+                                                <button type="submit" title="Delete this contact" class="btn btn-danger rounded-end-pill "><i class="fa-solid fa-trash"></i></button>
+
+                                            </div>
+                                            <div class="dropdown d-lg-none">
+                                                <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa-solid fa-bars"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                    <li><a class="dropdown-item" title="Show this contact" href="{{ route('contacts.show', $contact->id) }}">Show</a></li>
+                                                    <li><a class="dropdown-item" title="Edit this contact" href="{{ route('contacts.edit', $contact->id) }}">Edit</a></li>
+                                                    <li><button type="submit" title="Delete this contact" class="dropdown-item">Delete</button></li>
+                                                </ul>
+                                            </div>
                                         </form>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
-
                     </table>
                 </div>
             </div>
